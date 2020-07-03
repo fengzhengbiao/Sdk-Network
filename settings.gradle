@@ -1,0 +1,3 @@
+include ':lib-network'
+include ':app'
+rootProject.name = "Sdk-Network"
