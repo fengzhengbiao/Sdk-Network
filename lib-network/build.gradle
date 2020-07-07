@@ -42,9 +42,10 @@ dependencies {
     api rootProject.ext.dependencies["kotlinx-coroutines-core"]
     api rootProject.ext.dependencies["kotlinx-coroutines-android"]
 
+    api rootProject.ext.dependencies["lifecycle-livedata-ktx"]
+    api rootProject.ext.dependencies["lifecycle-viewmodel-ktx"]
 
-
-
+    
 
     api rootProject.ext.dependencies["gson"]
     api rootProject.ext.dependencies["retrofit"]
