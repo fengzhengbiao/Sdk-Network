@@ -39,8 +39,13 @@ dependencies {
     implementation rootProject.ext.dependencies["core-ktx"]
     implementation rootProject.ext.dependencies["appcompat"]
 
-    api rootProject.ext.dependencies["rxjava"]
-    api rootProject.ext.dependencies["rxandroid"]
+    api rootProject.ext.dependencies["kotlinx-coroutines-core"]
+    api rootProject.ext.dependencies["kotlinx-coroutines-android"]
+
+
+
+
+
     api rootProject.ext.dependencies["gson"]
     api rootProject.ext.dependencies["retrofit"]
     api rootProject.ext.dependencies["retrofit-converter-gson"]
