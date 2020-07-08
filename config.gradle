@@ -38,6 +38,7 @@ ext {
 
             "lifecycle-livedata-ktx"    : "androidx.lifecycle:lifecycle-livedata-ktx:${dependVersion.lifecycle_version}",
             "lifecycle-viewmodel-ktx"   : "androidx.lifecycle:lifecycle-viewmodel-ktx:${dependVersion.lifecycle_version}",
+            "lifecycle-extensions"      : "androidx.lifecycle:lifecycle-extensions:${dependVersion.lifecycle_version}",
 
 
 //            https://github.com/Kotlin/anko

@@ -44,6 +44,7 @@ dependencies {
 
     api rootProject.ext.dependencies["lifecycle-livedata-ktx"]
     api rootProject.ext.dependencies["lifecycle-viewmodel-ktx"]
+    api rootProject.ext.dependencies["lifecycle-extensions"]
 
     
 
