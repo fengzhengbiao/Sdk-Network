@@ -22,6 +22,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/proguard/coroutines.pro'
+    }
+
     lintOptions {
         abortOnError = false
     }
@@ -46,7 +51,6 @@ dependencies {
     api rootProject.ext.dependencies["lifecycle-viewmodel-ktx"]
     api rootProject.ext.dependencies["lifecycle-extensions"]
 
-    
 
     api rootProject.ext.dependencies["gson"]
     api rootProject.ext.dependencies["retrofit"]
