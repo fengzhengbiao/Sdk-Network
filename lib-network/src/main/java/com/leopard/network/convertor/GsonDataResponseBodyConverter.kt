@@ -34,17 +34,17 @@ internal class GsonDataResponseBodyConverter<T>(
                     gson.newJsonReader(value.charStream())
                 val read = adapter.read(jsonReader)
                 val httpResponse: HttpResponse<*> = read as HttpResponse<*>
-                if (httpResponse.getCode() != 0) {
-                    throw ApiException("Server Error!", httpResponse.getCode())
+                if (!httpResponse.isSuccess) {
+                    throw ApiException("Server Error!", 1000)
                 }
                 read
             } else {
                 val string = value.string()
                 val jsonObject = JSONObject(string)
-                val code = jsonObject.getInt("code")
-                if (code != 0) {
-                    val message = jsonObject.optString("message")
-                    throw ApiException(message, code)
+                val status = jsonObject.getString("status")
+                if (!HttpResponse.SUCCESS.equals(status)) {
+                    val message = jsonObject.optString("Server Error!")
+                    throw ApiException(message, 1000)
                 }
                 val data = jsonObject.optString("data")
                 val jsonReader =
