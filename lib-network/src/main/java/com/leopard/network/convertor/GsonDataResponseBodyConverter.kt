@@ -30,14 +30,8 @@ internal class GsonDataResponseBodyConverter<T>(
         return try {
             val aClass = getRawType(type)
             if (aClass.isAssignableFrom(HttpResponse::class.java)) {
-                val jsonReader =
-                    gson.newJsonReader(value.charStream())
-                val read = adapter.read(jsonReader)
-                val httpResponse: HttpResponse<*> = read as HttpResponse<*>
-                if (!httpResponse.isSuccess) {
-                    throw ApiException("Server Error!", 1000)
-                }
-                read
+                val jsonReader = gson.newJsonReader(value.charStream())
+                adapter.read(jsonReader)
             } else {
                 val string = value.string()
                 val jsonObject = JSONObject(string)

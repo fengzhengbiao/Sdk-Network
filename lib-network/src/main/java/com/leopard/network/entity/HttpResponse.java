@@ -11,8 +11,10 @@ import android.text.TextUtils;
 public class HttpResponse<T> {
 
     public static final String SUCCESS = "success";
-    private String status;
+    private String code;
     private T data;
+    private String status;
+    private String message;
 
 
     public boolean isSuccess() {
@@ -34,5 +36,21 @@ public class HttpResponse<T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
