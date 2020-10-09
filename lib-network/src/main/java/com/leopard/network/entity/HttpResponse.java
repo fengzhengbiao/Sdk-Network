@@ -10,23 +10,21 @@ import android.text.TextUtils;
  **********************************************/
 public class HttpResponse<T> {
 
-    public static final String SUCCESS = "success";
-    private String code;
+
+    private int code;
     private T data;
-    private String status;
+    private boolean status;
     private String message;
 
-
-    public boolean isSuccess() {
-        return SUCCESS.equals(status);
+    public boolean isSuccess(){
+        return code==200;
     }
 
-
-    public String getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 
@@ -38,11 +36,11 @@ public class HttpResponse<T> {
         this.data = data;
     }
 
-    public String getCode() {
+    public int getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
 

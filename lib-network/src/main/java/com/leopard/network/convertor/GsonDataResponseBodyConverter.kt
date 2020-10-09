@@ -35,8 +35,8 @@ internal class GsonDataResponseBodyConverter<T>(
             } else {
                 val string = value.string()
                 val jsonObject = JSONObject(string)
-                val status = jsonObject.getString("status")
-                if (!HttpResponse.SUCCESS.equals(status)) {
+                val code = jsonObject.getInt("code")
+                if (code != 200) {
                     val message = jsonObject.optString("Server Error!")
                     throw ApiException(message, 1000)
                 }
