@@ -46,7 +46,12 @@ internal class GsonDataResponseBodyConverter<T>(
                     if (code == 400) {
                         val uri =
                             Uri.parse("yyjy://account/login")
-                        NetworkService.ctx.startActivity(Intent(Intent.ACTION_VIEW, uri).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+                        NetworkService.ctx.startActivity(
+                            Intent(Intent.ACTION_VIEW, uri).addFlags(
+                                Intent.FLAG_ACTIVITY_NEW_TASK
+                            )
+                        )
+                        NetworkService.ctx.sendBroadcast(Intent("com.yyjy.account.ACTION_LOGIN_INVALID"))
                         Toast.makeText(NetworkService.ctx, "请重新登录", Toast.LENGTH_SHORT).show()
                     }
                     val message = jsonObject.optString("Server Error!")
