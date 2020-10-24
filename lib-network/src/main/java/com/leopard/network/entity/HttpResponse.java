@@ -13,18 +13,19 @@ public class HttpResponse<T> {
 
     private int code;
     private T data;
-    private boolean status;
+    private String status;
     private String message;
+    public static final String SUCCESS = "success";
 
-    public boolean isSuccess(){
-        return code==200;
+    public boolean isSuccess() {
+        return SUCCESS.equals(status) || code == 200;
     }
 
-    public boolean isStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

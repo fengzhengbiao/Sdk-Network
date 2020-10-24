@@ -1,9 +1,14 @@
 package com.cash.pinjaman.net.convertor
 
+import android.content.Intent
+import android.net.Uri
 import android.text.TextUtils
+import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import com.google.gson.Gson
 import com.google.gson.TypeAdapter
 import com.google.gson.stream.JsonReader
+import com.leopard.network.NetworkService
 import com.leopard.network.entity.ApiException
 import com.leopard.network.entity.HttpResponse
 import okhttp3.ResponseBody
@@ -35,8 +40,15 @@ internal class GsonDataResponseBodyConverter<T>(
             } else {
                 val string = value.string()
                 val jsonObject = JSONObject(string)
-                val code = jsonObject.getInt("code")
-                if (code != 200) {
+                val status = jsonObject.optString("status");
+                val code = jsonObject.optInt("code")
+                if (code != 200 && HttpResponse.SUCCESS != status) {
+                    if (code == 400) {
+                        val uri =
+                            Uri.parse("yyjy://account/login")
+                        NetworkService.ctx.startActivity(Intent(Intent.ACTION_VIEW, uri))
+                        Toast.makeText(NetworkService.ctx, "请重新登录", Toast.LENGTH_SHORT).show()
+                    }
                     val message = jsonObject.optString("Server Error!")
                     throw ApiException(message, 1000)
                 }

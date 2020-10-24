@@ -1,5 +1,6 @@
 package com.leopard.network
 
+import android.content.Context
 import android.os.Environment
 import android.util.Log
 import com.cash.pinjaman.net.convertor.GsonDataConverterFactory
@@ -23,6 +24,7 @@ object NetworkService {
     private val CACHEDIRECTORY = File(Environment.getDataDirectory(), "httpCache")
     private val CACHE = Cache(CACHEDIRECTORY, 10 * 1024 * 1024)
     private lateinit var BASE_URL: String
+    lateinit var ctx: Context
 
 
     fun createRetrofit() = Retrofit.Builder()
@@ -58,8 +60,9 @@ object NetworkService {
     }
 
 
-    fun init(url: String, timeOut: Long = TIMEOUT_VALUE) {
+    fun init(contex:Context,url: String, timeOut: Long = TIMEOUT_VALUE) {
         BASE_URL = url
+        ctx=contex.applicationContext
         TIMEOUT_VALUE = timeOut
         Log.i(TAG, "init: base url: $BASE_URL ")
     }
