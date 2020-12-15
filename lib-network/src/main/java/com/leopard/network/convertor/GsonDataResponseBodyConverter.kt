@@ -2,6 +2,7 @@ package com.cash.pinjaman.net.convertor
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Looper
 import android.text.TextUtils
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
@@ -52,7 +53,9 @@ internal class GsonDataResponseBodyConverter<T>(
                             )
                         )
                         NetworkService.ctx.sendBroadcast(Intent("com.yyjy.account.ACTION_LOGIN_INVALID"))
+                        Looper.prepare()
                         Toast.makeText(NetworkService.ctx, "请重新登录", Toast.LENGTH_SHORT).show()
+                        Looper.loop()
                     }
                     val message = jsonObject.optString("Server Error!")
                     throw ApiException(message, 1000)
